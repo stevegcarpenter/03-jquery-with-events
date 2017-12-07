@@ -49,7 +49,7 @@ articleView.handleAuthorFilter = function() {
       // console.log('Author name:', author);
       $('article').each(function () {
         // If the author selected is the author of the currently selected article show it
-        let dataAuthor = $(this).attr('data-author');
+        // let dataAuthor = $(this).attr('data-author');
         // console.log('data-author:', dataAuthor);
         if (author === $(this).attr('data-author')) {
           // console.log('Found match!, showing now.');
@@ -94,6 +94,13 @@ articleView.handleCategoryFilter = function() {
 };
 
 articleView.handleMainNav = function() {
+  $('.main-nav .tab').on('click', function(){
+    // console.log($(this));
+    let contentDisplay = $(this).data('content');
+    console.log(contentDisplay);
+    $('.tab-content').hide();
+    $(`#${contentDisplay}`).show();
+  })
   // TODO: Add an event handler to .main-nav elements that will power the Tabs feature.
   // Clicking any .tab element should hide all the .tab-content sections, and then reveal the single .tab-content section that is associated with the clicked .tab element.
   // So: You need to dynamically build a selector string with the correct ID, based on the data available to you on the .tab element that was clicked.
@@ -115,4 +122,5 @@ $(document).ready(function() {
   articleView.populateFilters();
   articleView.handleAuthorFilter();
   articleView.handleCategoryFilter();
+  articleView.handleMainNav();
 })
