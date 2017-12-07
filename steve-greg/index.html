@@ -77,9 +77,14 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="scripts/blogArticles.js"></script>
   <script src="scripts/article.js"></script>
-  <!-- TODO: Link our new script file in. -->
+  <script src="scripts/articleView.js"></script>
+  <!-- DONE: Link our new script file in. -->
 
   <!-- COMMENT: Explain the ordering of your script files. -->
-  <!-- PUT YOUR RESPONSE HERE -->
+  <!-- We added files in the following order for the following reasons:
+       1. jQuery first becuase articleView.js and article.js both need jQuery.
+       2. blogArticles.js are needed by article.js to import the raw data
+       3. article.js is needed by articleView.js to create and access articles
+       4. articleView.js is included last. This ustilizes everything else. -->
 </body>
 </html>
