@@ -67,11 +67,30 @@ articleView.handleAuthorFilter = function() {
 };
 
 articleView.handleCategoryFilter = function() {
-  // TODO: Just like we do for #author-filter above, we should handle change events on the #category-filter element.
-  // When an option with a value is selected, hide all the articles, then reveal the matches.
-  // When the blank (default) option is selected, show all the articles, except for the template.
-  // Be sure to reset the #author-filter while you are at it!
-
+  $('#category-filter').on('change', function() {
+    console.log('Entered category filter');
+    if ($(this).val()) {
+      $('article').hide();
+      let $filter = $(this)
+      let category = $filter.val();
+      console.log('category name:', category);
+      $('article').each(function () {
+        // If the category selected is the category of the currently selected article show it
+        let dataCategory = $(this).attr('data-category');
+        console.log('data-category:', dataCategory);
+        if (category === $(this).attr('data-category')) {
+          console.log('Found match!, showing now.');
+          console.log('this:', $(this));
+          $(this).show();
+        }
+      })
+    } else {
+      // TODO: If the <select> menu was changed to an option that is blank, we should first show all the articles, except the one article we are using as a template.
+      $('article').not('.template').show(300);
+      console.log('showing all articles but template');
+    }
+    $('#category-author').val('');
+  });
 };
 
 articleView.handleMainNav = function() {
@@ -95,4 +114,5 @@ articleView.setTeasers = function() {
 $(document).ready(function() {
   articleView.populateFilters();
   articleView.handleAuthorFilter();
+  articleView.handleCategoryFilter();
 })
