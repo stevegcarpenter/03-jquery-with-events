@@ -25,7 +25,7 @@ articleView.populateFilters = function() {
       // Avoid duplicates! We don't want to append the category name if the <select> already has this category as an option!
       category = $(this).attr('data-category');
 
-      // TODO: Refactor this concatenation using a template literal.
+      // DONE: Refactor this concatenation using a template literal.
       optionTag = `<option value="${category}">${category}</option>`;
 
       //Insert category tag unless already present.
@@ -58,7 +58,7 @@ articleView.handleAuthorFilter = function() {
         }
       })
     } else {
-      // TODO: If the <select> menu was changed to an option that is blank, we should first show all the articles, except the one article we are using as a template.
+      // DONE: If the <select> menu was changed to an option that is blank, we should first show all the articles, except the one article we are using as a template.
       $('article').not('.template').show(300);
       console.log('showing all articles but template');
     }
@@ -85,7 +85,6 @@ articleView.handleCategoryFilter = function() {
         }
       })
     } else {
-      // TODO: If the <select> menu was changed to an option that is blank, we should first show all the articles, except the one article we are using as a template.
       $('article').not('.template').show(300);
       console.log('showing all articles but template');
     }
@@ -125,11 +124,11 @@ articleView.setTeasers = function() {
     $(this).hide();
   })
 
-  // TODO: Add an event handler to reveal all the hidden elements, when the .read-on link is clicked. You can go ahead and hide the "Read On" link once it has been clicked. Be sure to prevent the default link-click action!
+  // DONE: Add an event handler to reveal all the hidden elements, when the .read-on link is clicked. You can go ahead and hide the "Read On" link once it has been clicked. Be sure to prevent the default link-click action!
   // Ideally, we'd attach this as just one event handler on the #articles section, and let it process (in other words... delegate) any .read-on clicks that happen within child nodes.
 };
 
-// TODO: Call all of the above functions, once we are sure the DOM is ready.
+// DONE: Call all of the above functions, once we are sure the DOM is ready.
 $(document).ready(function() {
   articleView.populateFilters();
   articleView.handleAuthorFilter();
