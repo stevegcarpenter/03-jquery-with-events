@@ -54,7 +54,7 @@ articleView.handleAuthorFilter = function() {
         if (author === $(this).attr('data-author')) {
           // console.log('Found match!, showing now.');
           // console.log('this:', $(this));
-          $(this).show();
+          $(this).show(300);
         }
       })
     } else {
@@ -94,17 +94,20 @@ articleView.handleCategoryFilter = function() {
 };
 
 articleView.handleMainNav = function() {
+  // DONE: Add an event handler to .main-nav elements that will power the Tabs feature.
+  // Clicking any .tab element should hide all the .tab-content sections, and then reveal the single .tab-content section that is associated with the clicked .tab element.
+  // So: You need to dynamically build a selector string with the correct ID, based on the data available to you on the .tab element that was clicked.
+
   $('.main-nav .tab').on('click', function(){
     // console.log($(this));
     let contentDisplay = $(this).data('content');
     console.log(contentDisplay);
     $('.tab-content').hide();
     $(`#${contentDisplay}`).show();
-  })
-  // TODO: Add an event handler to .main-nav elements that will power the Tabs feature.
-  // Clicking any .tab element should hide all the .tab-content sections, and then reveal the single .tab-content section that is associated with the clicked .tab element.
-  // So: You need to dynamically build a selector string with the correct ID, based on the data available to you on the .tab element that was clicked.
 
+    // Hide the template section
+    $('section .template').hide();
+  })
   // REVIEW: Now trigger a click on the first .tab element, to set up the page.
   $('.main-nav .tab:first').click();
 };
@@ -123,4 +126,5 @@ $(document).ready(function() {
   articleView.handleAuthorFilter();
   articleView.handleCategoryFilter();
   articleView.handleMainNav();
+  articleView.setTeasers();
 })
